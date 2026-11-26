@@ -9,6 +9,22 @@
   <meta name="description" content="Servicios generales de construcción, albañilería, gasfitería, electricidad, acabados, mayólicas y mantenimiento integral. Facturación formal con RUC 10." />
   <title>Sánchez Servicios Generales | Construcción, Acabados y Mantenimiento</title>
 
+  <!-- Ícono de pestaña y acceso directo móvil -->
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+
+  <!-- Etiquetas Open Graph para miniatura en WhatsApp, Facebook y redes -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sánchez Servicios Generales" />
+  <meta property="og:title" content="Sánchez Servicios Generales | Construcción, Acabados y Mantenimiento" />
+  <meta property="og:description" content="Albañilería, gasfitería, electricidad, enchape de mayólicas, pisos, contrapisos y acabados. Emitimos Facturas y Recibos por RUC 10." />
+  <meta property="og:url" content="https://ssanchezserviciosgenerales.github.io/sanchez-servicios/" />
+  <meta property="og:image" content="https://ssanchezserviciosgenerales.github.io/sanchez-servicios/logo.png" />
+  <meta property="og:image:secure_url" content="https://ssanchezserviciosgenerales.github.io/sanchez-servicios/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+
   <!-- Tipografía clara y moderna (Google Fonts con fallback nativo iOS/Android) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -835,6 +851,13 @@
       margin-bottom: 8px;
     }
 
+    .field-hint {
+      display: block;
+      font-size: 0.76rem;
+      color: var(--slate-600);
+      margin-top: 5px;
+    }
+
     /* font-size: 16px evita el auto-zoom molesto en iOS Safari */
     input, select, textarea {
       width: 100%;
@@ -1286,9 +1309,11 @@
             </div>
           </div>
 
-          <!-- FORMULARIO CON ACTION CONFIGURADO PARA FORMSPREE -->
+          <!-- FORMULARIO CON ENLACE REAL DE FORMSPREE Y VALIDACIÓN DE 9 DÍGITOS -->
           <div class="form-card">
-            <form id="quoteForm" action="https://formspree.io/f/TU_EMAIL" method="POST">
+            <form id="quoteForm" action="https://formspree.io/f/mbgowwva" method="POST">
+              <input type="hidden" name="_subject" value="Nueva solicitud de cotización - Sánchez Servicios" />
+
               <div class="form-row-2">
                 <div class="form-group">
                   <label for="nombre">Nombre completo o Empresa *</label>
@@ -1297,7 +1322,19 @@
 
                 <div class="form-group">
                   <label for="telefono">Teléfono / WhatsApp *</label>
-                  <input type="tel" id="telefono" name="telefono" placeholder="Ej. 987 654 321" inputmode="tel" autocomplete="tel" required />
+                  <input
+                    type="tel"
+                    id="telefono"
+                    name="telefono"
+                    placeholder="Ej. 987654321"
+                    inputmode="numeric"
+                    pattern="[0-9]{7,9}"
+                    maxlength="9"
+                    title="Ingresa un número válido de hasta 9 dígitos (solo números)"
+                    autocomplete="tel"
+                    required
+                  />
+                  <span class="field-hint">Solo números (máximo 9 dígitos)</span>
                 </div>
               </div>
 
@@ -1358,7 +1395,15 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. Preselección automática de servicio desde las tarjetas
+      // 1. Validación en tiempo real: solo números y máximo 9 dígitos
+      const phoneInput = document.getElementById('telefono');
+      if (phoneInput) {
+        phoneInput.addEventListener('input', () => {
+          phoneInput.value = phoneInput.value.replace(/\D/g, '').slice(0, 9);
+        });
+      }
+
+      // 2. Preselección automática de servicio desde las tarjetas
       const serviceSelect = document.getElementById('servicio');
       const messageInput = document.getElementById('mensaje');
       const serviceButtons = document.querySelectorAll('[data-select-service]');
@@ -1379,13 +1424,12 @@
         });
       });
 
-      // 2. Animaciones fluidas con GSAP (con ejecución segura)
+      // 3. Animaciones fluidas con GSAP (con ejecución segura)
       if (typeof gsap !== 'undefined') {
         if (typeof ScrollTrigger !== 'undefined') {
           gsap.registerPlugin(ScrollTrigger);
         }
 
-        // Entrada del Hero
         gsap.from('.hero-content > *', {
           y: 22,
           opacity: 0,
@@ -1402,7 +1446,6 @@
           ease: 'power3.out'
         });
 
-        // Tarjetas de servicios al hacer scroll
         gsap.from('.service-card', {
           scrollTrigger: {
             trigger: '.services-grid',
@@ -1416,7 +1459,6 @@
           ease: 'power2.out'
         });
 
-        // Banner Fiscal RUC 10
         gsap.from('.fiscal-banner', {
           scrollTrigger: {
             trigger: '.fiscal-section',
@@ -1429,7 +1471,6 @@
           ease: 'power2.out'
         });
 
-        // Pasos de metodología
         gsap.from('.step-card', {
           scrollTrigger: {
             trigger: '.steps-grid',

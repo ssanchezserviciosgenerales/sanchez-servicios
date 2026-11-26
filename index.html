@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0B132B" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="description" content="Servicios generales de construcción, albañilería, gasfitería, electricidad, acabados, mayólicas y mantenimiento integral. Facturación formal con RUC 10." />
+  <title>Sánchez Servicios Generales | Construcción, Acabados y Mantenimiento</title>
+
+  <!-- Tipografía clara y moderna (Google Fonts con fallback nativo iOS/Android) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       VARIABLES Y SISTEMA DE DISEÑO (PALETA SOBRIA Y PROFESIONAL)
+       ========================================================================== */
+    :root {
+      --bg-primary: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-dark: #0B132B;
+      --bg-dark-elevated: #16213E;
+      --slate-900: #0F172A;
+      --slate-800: #1E293B;
+      --slate-600: #475569;
+      --slate-400: #94A3B8;
+      --border-light: #E2E8F0;
+      --border-dark: rgba(255, 255, 255, 0.12);
+      --accent-amber: #D97706;
+      --accent-amber-hover: #B45309;
+      --accent-amber-soft: #FEF3C7;
+      --trust-emerald: #059669;
+      --trust-emerald-soft: rgba(16, 185, 129, 0.14);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 20px 40px -12px rgba(11, 19, 43, 0.22);
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-top: env(safe-area-inset-top, 0px);
+    }
+
+    /* ==========================================================================
+       RESET Y OPTIMIZACIÓN PARA ANDROID E iOS
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      font-family: var(--font-sans);
+      background-color: var(--bg-primary);
+      color: var(--slate-900);
+    }
+
+    body {
+      line-height: 1.6;
+      overflow-x: hidden;
+      padding-bottom: calc(74px + var(--safe-bottom));
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding-bottom: 0;
+      }
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    a, button, select, input, textarea {
+      font-family: inherit;
+      touch-action: manipulation;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ==========================================================================
+       NAVEGACIÓN SUPERIOR (GLASSMORPHISM)
+       ========================================================================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 19, 43, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-dark);
+      padding-top: var(--safe-top);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #FFFFFF;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #F59E0B, #B45309);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: #0B132B;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .brand-title {
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-sub {
+      font-size: 0.72rem;
+      color: var(--slate-400);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: #CBD5E1;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #FFFFFF;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-amber);
+      color: #FFFFFF !important;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-weight: 700 !important;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent-amber-hover);
+      transform: translateY(-1px);
+    }
+
+    @media (min-width: 860px) {
+      .nav-links {
+        display: flex;
+      }
+      .mobile-only-cta {
+        display: none;
+      }
+    }
+
+    /* ==========================================================================
+       HERO SECTION (ARQUITECTURA Y CONFIANZA)
+       ========================================================================== */
+    .hero {
+      position: relative;
+      background-color: var(--bg-dark);
+      background-image:
+        radial-gradient(circle at 85% 20%, rgba(217, 119, 6, 0.16), transparent 42%),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 36px 36px, 36px 36px;
+      color: #FFFFFF;
+      padding: 64px 0 76px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (min-width: 920px) {
+      .hero {
+        padding: 88px 0 96px;
+      }
+      .hero-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 48px;
+      }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FDE68A;
+      margin-bottom: 22px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4.6vw, 3.15rem);
+      font-weight: 800;
+      line-height: 1.14;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #F59E0B;
+    }
+
+    .hero-desc {
+      font-size: clamp(1rem, 1.8vw, 1.125rem);
+      color: #CBD5E1;
+      max-width: 58ch;
+      margin-bottom: 32px;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 14px 26px;
+      background: var(--accent-amber);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.96rem;
+      border: none;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-amber-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 50px;
+      padding: 14px 24px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 0.96rem;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* Tarjeta Resumen Técnico en Hero */
+    .hero-card {
+      background: rgba(22, 33, 62, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 18px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .ruc-pill {
+      background: rgba(16, 185, 129, 0.16);
+      color: #34D399;
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .check-list {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: #E2E8F0;
+    }
+
+    .check-icon {
+      width: 20px;
+      height: 20px;
+      color: #F59E0B;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ==========================================================================
+       SECCIONES GENERALES
+       ========================================================================== */
+    .section {
+      padding: 72px 0;
+    }
+
+    @media (min-width: 768px) {
+      .section {
+        padding: 92px 0;
+      }
+    }
+
+    .section-header {
+      max-width: 680px;
+      margin-bottom: 48px;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-amber);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(1.65rem, 3.4vw, 2.35rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--slate-900);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .section-subtitle {
+      font-size: 1.02rem;
+      color: var(--slate-600);
+    }
+
+    /* ==========================================================================
+       GRID DE SERVICIOS ESPECIALIZADOS
+       ========================================================================== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 640px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 980px) {
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+    }
+
+    .service-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: #CBD5E1;
+    }
+
+    .service-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: #F1F5F9;
+      color: var(--bg-dark);
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    .service-card:hover .service-icon-box {
+      background: var(--bg-dark);
+      color: #F59E0B;
+    }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .service-card p {
+      font-size: 0.92rem;
+      color: var(--slate-600);
+      margin-bottom: 20px;
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--slate-800);
+      background: #F1F5F9;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--accent-amber);
+      text-decoration: none;
+      background: none;
+      border: none;
+      padding: 6px 0;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+
+    .service-link:hover {
+      color: var(--accent-amber-hover);
+      text-decoration: underline;
+    }
+
+    /* ==========================================================================
+       SECCIÓN DESTACADA: COMPROMISO FISCAL Y FACTURACIÓN RUC 10
+       ========================================================================== */
+    .fiscal-section {
+      padding: 20px 0 72px;
+    }
+
+    .fiscal-banner {
+      background: linear-gradient(135deg, #0B132B 0%, #1E293B 100%);
+      border-radius: var(--radius-lg);
+      padding: 36px 26px;
+      color: #FFFFFF;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @media (min-width: 860px) {
+      .fiscal-banner {
+        padding: 48px 52px;
+      }
+    }
+
+    .fiscal-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    @media (min-width: 860px) {
+      .fiscal-grid {
+        grid-template-columns: 1.3fr 0.7fr;
+      }
+    }
+
+    .fiscal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--trust-emerald-soft);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #34D399;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+
+    .fiscal-banner h2 {
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 800;
+      line-height: 1.22;
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+
+    .fiscal-banner p {
+      color: #CBD5E1;
+      font-size: 0.98rem;
+      margin-bottom: 24px;
+      max-width: 60ch;
+    }
+
+    .fiscal-features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 580px) {
+      .fiscal-features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .fiscal-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #F8FAFC;
+    }
+
+    .fiscal-doc-card {
+      background: #FFFFFF;
+      color: var(--slate-900);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .doc-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px dashed #CBD5E1;
+      padding-bottom: 14px;
+      margin-bottom: 14px;
+    }
+
+    .doc-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--slate-600);
+    }
+
+    .doc-status {
+      background: #DCFCE7;
+      color: #166534;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    .doc-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--bg-dark);
+      margin-bottom: 6px;
+    }
+
+    .doc-note {
+      font-size: 0.84rem;
+      color: var(--slate-600);
+      margin-bottom: 14px;
+    }
+
+    .doc-meta {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 0.8rem;
+      color: var(--slate-800);
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       PROCESO DE TRABAJO (CONFIANZA OPERATIVA)
+       ========================================================================== */
+    .process-section {
+      background: #FFFFFF;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .steps-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .step-card {
+      padding: 24px;
+      border-radius: var(--radius-md);
+      background: var(--bg-primary);
+      border: 1px solid var(--border-light);
+    }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--bg-dark);
+      color: #F59E0B;
+      font-weight: 800;
+      font-size: 0.92rem;
+      margin-bottom: 16px;
+    }
+
+    .step-card h3 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .step-card p {
+      font-size: 0.9rem;
+      color: var(--slate-600);
+    }
+
+    /* ==========================================================================
+       FORMULARIO DE COTIZACIÓN (OPTIMIZADO PARA MÓVIL)
+       ========================================================================== */
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    @media (min-width: 880px) {
+      .contact-wrapper {
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 48px;
+      }
+    }
+
+    .contact-info-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .info-row:first-child {
+      padding-top: 0;
+    }
+
+    .info-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--accent-amber-soft);
+      color: var(--accent-amber-hover);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .info-row h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .info-row p {
+      font-size: 0.88rem;
+      color: var(--slate-600);
+    }
+
+    .form-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 28px 22px;
+      box-shadow: var(--shadow-md);
+    }
+
+    @media (min-width: 640px) {
+      .form-card {
+        padding: 36px;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    @media (min-width: 580px) {
+      .form-row-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--slate-800);
+      margin-bottom: 8px;
+    }
+
+    /* font-size: 16px evita el auto-zoom molesto en iOS Safari */
+    input, select, textarea {
+      width: 100%;
+      font-size: 16px;
+      color: var(--slate-900);
+      background: #F8FAFC;
+      border: 1.5px solid #CBD5E1;
+      border-radius: var(--radius-sm);
+      padding: 13px 14px;
+      transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 42px;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      background: #FFFFFF;
+      border-color: var(--accent-amber);
+      box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.14);
+    }
+
+    textarea {
+      min-height: 118px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      min-height: 54px;
+      background: var(--bg-dark);
+      color: #FFFFFF;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .submit-btn:hover {
+      background: #1E293B;
+      transform: translateY(-1px);
+    }
+
+    .form-privacy {
+      margin-top: 12px;
+      font-size: 0.78rem;
+      color: var(--slate-600);
+      text-align: center;
+    }
+
+    /* ==========================================================================
+       FOOTER Y BARRA INFERIOR MÓVIL (ANDROID / iOS SAFE-AREA)
+       ========================================================================== */
+    footer {
+      background: var(--bg-dark);
+      color: #94A3B8;
+      padding: 44px 0;
+      border-top: 1px solid var(--border-dark);
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: space-between;
+    }
+
+    @media (min-width: 768px) {
+      .footer-inner {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .mobile-sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 95;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border-light);
+      padding: 10px 16px calc(10px + var(--safe-bottom));
+      display: flex;
+      gap: 10px;
+      box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.08);
+    }
+
+    .mobile-sticky-bar a {
+      flex: 1;
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .bar-btn-services {
+      background: #F1F5F9;
+      color: var(--slate-900);
+    }
+
+    .bar-btn-quote {
+      background: var(--accent-amber);
+      color: #FFFFFF;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-sticky-bar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE NAVEGACIÓN -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#inicio" class="brand" aria-label="Inicio">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18" />
+            <path d="M5 21V7l7-4 7 4v14" />
+            <path d="M9 21v-6h6v6" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Sánchez Servicios</span>
+          <span class="brand-sub">Construcción &amp; Mantenimiento</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#formalidad">Facturación RUC 10</a>
+        <a href="#proceso">Metodología</a>
+        <a href="#cotizar" class="nav-cta">Solicitar Cotización</a>
+      </nav>
+
+      <a href="#cotizar" class="nav-cta mobile-only-cta">Cotizar</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>Formalidad SUNAT • Facturas y Recibos por RUC 10</span>
+          </div>
+          <h1>Soluciones integrales en <span>construcción y mantenimiento</span> con respaldo técnico.</h1>
+          <p class="hero-desc">
+            Ejecutamos obras de albañilería, gasfitería, renovación de tuberías, enchape de mayólicas, pisos, contrapisos, acabados, cerrajería e instalaciones eléctricas y sanitarias con puntualidad y garantía.
+          </p>
+          <div class="hero-actions">
+            <a href="#cotizar" class="btn-primary">
+              <span>Cotizar mi proyecto</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="#servicios" class="btn-secondary">Explorar servicios</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Garantías del servicio">
+          <div class="hero-card-header">
+            <span class="hero-card-title">Estándar de Ejecución</span>
+            <span class="ruc-pill">RUC 10 ACTIVO</span>
+          </div>
+          <ul class="check-list">
+            <li>
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Emisión de comprobantes válidos:</strong> Factura electrónica y Recibo por Honorarios ante SUNAT.</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Presupuesto detallado por partidas:</strong> Transparencia total en materiales y mano de obra.</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Atención residencial y comercial:</strong> Viviendas, departamentos, oficinas y locales.</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Limpieza y entrega puntual:</strong> Cumplimiento estricto del cronograma acordado.</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO DE SERVICIOS -->
+    <section id="servicios" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Especialidades Técnicas</span>
+          <h2 class="section-title">Servicios generales ejecutados con precisión</h2>
+          <p class="section-subtitle">Cubrimos desde reparaciones puntuales hasta remodelaciones integrales con herramientas profesionales y materiales normados.</p>
+        </div>
+
+        <div class="services-grid">
+          <!-- 1. Albañilería, Pisos y Contrapisos -->
+          <article class="service-card">
+            <div>
+              <div class="service-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v6"/><path d="M15 9v6"/><path d="M9 15v6"/></svg>
+              </div>
+              <h3>Albañilería, Pisos y Contrapisos</h3>
+              <p>Nivelación de falsos pisos y contrapisos, asentado de muros, tarrajeo frotachado, resanes y remodelación de ambientes.</p>
+              <div class="service-tags">
+                <span class="tag">Contrapisos</span>
+                <span class="tag">Tarrajeo</span>
+                <span class="tag">Muros y resanes</span>
+              </div>
+            </div>
+            <button type="button" class="service-link" data-select-service="Albañilería, pisos y contrapisos">Solicitar este servicio →</button>
+          </article>
+
+          <!-- 2. Enchape de Mayólicas y Porcelanatos -->
+          <article class="service-card">
+            <div>
+              <div class="service-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+              </div>
+              <h3>Mayólicas y Revestimientos</h3>
+              <p>Instalación nivelada de mayólicas, cerámicos y porcelanatos en pisos, baños, cocinas, lavanderías y fachadas con fraguado limpio.</p>
+              <div class="service-tags">
+                <span class="tag">Mayólicas</span>
+                <span class="tag">Porcelanato</span>
+                <span class="tag">Baños y cocinas</span>
+              </div>
+            </div>
+            <button type="button" class="service-link" data-select-service="Enchape de mayólicas y pisos">Solicitar este servicio →</button>
+          </article>
+
+          <!-- 3. Gasfitería y Renovación de Tuberías -->
+          <article class="service-card">
+            <div>
+              <div class="service-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+              </div>
+              <h3>Gasfitería y Renovación de Tuberías</h3>
+              <p>Cambio integral de redes antiguas de agua fría, caliente y desagüe (PVC, CPVC, termofusión), reparación de filtraciones e instalación de sanitarios.</p>
+              <div class="service-tags">
+                <span class="tag">Renovación de tuberías</span>
+                <span class="tag">Instalaciones sanitarias</span>
+                <span class="tag">Fugas</span>
+              </div>
+            </div>
+            <button type="button" class="service-link" data-select-service="Gasfitería y renovación de tuberías">Solicitar este servicio →</button>
+          </article>
+
+          <!-- 4. Instalaciones Eléctricas -->
+          <article class="service-card">
+            <div>
+              <div class="service-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+              <h3>Instalaciones Eléctricas</h3>
+              <p>Cableado y recableado seguro, tableros eléctricos, llaves termomagnéticas y diferenciales, tomacorrientes, luminarias y detección de cortocircuitos.</p>
+              <div class="service-tags">
+                <span class="tag">Tableros</span>
+                <span class="tag">Cableado</span>
+                <span class="tag">Iluminación</span>
+              </div>
+            </div>
+            <button type="button" class="service-link" data-select-service="Instalaciones eléctricas">Solicitar este servicio →</button>
+          </article>
+
+          <!-- 5. Acabados y Pintura Arquitectónica -->
+          <article class="service-card">
+            <div>
+              <div class="service-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/></svg>
+              </div>
+              <h3>Acabados Generales y Pintura</h3>
+              <p>Empastado fino, lijado, pintura interior y exterior, tratamiento contra humedad y salitre, molduras, tabiquería drywall y detalles finales de obra.</p>
+              <div class="service-tags">
+                <span class="tag">Empastado y pintura</span>
+                <span class="tag">Tratamiento salitre</span>
+                <span class="tag">Drywall</span>
+              </div>
+            </div>
+            <button type="button" class="service-link" data-select-service="Acabados y pintura">Solicitar este servicio →</button>
+          </article>
+
+          <!-- 6. Cerrajería y Mantenimiento -->
+          <article class="service-card">
+            <div>
+              <div class="service-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <h3>Cerrajería y Mantenimiento</h3>
+              <p>Instalación y cambio de cerraduras de seguridad, chapas blindadas, bisagras, refuerzos metálicos, puertas y mantenimiento preventivo de inmuebles.</p>
+              <div class="service-tags">
+                <span class="tag">Cerrajería</span>
+                <span class="tag">Chapas de seguridad</span>
+                <span class="tag">Mantenimiento</span>
+              </div>
+            </div>
+            <button type="button" class="service-link" data-select-service="Cerrajería y mantenimiento general">Solicitar este servicio →</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN VISIBLE DE COMPROMISO FISCAL Y RUC 10 -->
+    <section id="formalidad" class="fiscal-section">
+      <div class="container">
+        <div class="fiscal-banner">
+          <div class="fiscal-grid">
+            <div>
+              <div class="fiscal-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                <span>Compromiso Tributario y Transparencia</span>
+              </div>
+              <h2>Emitimos Facturas y Recibos por RUC 10</h2>
+              <p>
+                Trabaja con la tranquilidad de contratar un servicio formal, registrado y al día con sus obligaciones fiscales ante SUNAT. Ideal tanto para propietarios particulares como para empresas, consorcios, estudios de arquitectura y administradores de edificios que requieren sustento contable.
+              </p>
+              <div class="fiscal-features">
+                <div class="fiscal-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Factura Electrónica válida para crédito fiscal</span>
+                </div>
+                <div class="fiscal-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Recibo por Honorarios Electrónico</span>
+                </div>
+                <div class="fiscal-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Cotizaciones formales por escrito</span>
+                </div>
+                <div class="fiscal-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Garantía documental sobre mano de obra</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="fiscal-doc-card" aria-label="Respaldo de comprobante electrónico">
+              <div class="doc-top">
+                <span class="doc-label">Comprobante Autorizado</span>
+                <span class="doc-status">SUNAT • RUC 10</span>
+              </div>
+              <div class="doc-title">Respaldo Fiscal Garantizado</div>
+              <p class="doc-note">
+                Cada servicio ejecutado cuenta con su respectivo comprobante de pago electrónico emitido al finalizar o según avance de obra.
+              </p>
+              <div class="doc-meta">
+                <span>Modalidad: Persona Natural con Negocio</span>
+                <span>100% Formal</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METODOLOGÍA DE TRABAJO -->
+    <section id="proceso" class="section process-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Cómo Trabajamos</span>
+          <h2 class="section-title">Un proceso ordenado de principio a fin</h2>
+          <p class="section-subtitle">Evita improvisaciones y sobrecostos con una metodología clara antes de iniciar cualquier intervención.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <span class="step-num">01</span>
+            <h3>Diagnóstico y Medición</h3>
+            <p>Evaluamos el área de trabajo, el estado de instalaciones existentes y los requerimientos técnicos para definir la mejor solución.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">02</span>
+            <h3>Presupuesto Claro y Formal</h3>
+            <p>Entregamos una cotización detallada con alcance, tiempos de entrega y opción de Factura o Recibo por RUC 10.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">03</span>
+            <h3>Ejecución Limpia y Entrega</h3>
+            <p>Realizamos el trabajo cumpliendo normas técnicas, manteniendo el orden en obra y verificando cada acabado contigo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULARIO DE CONTACTO Y COTIZACIÓN -->
+    <section id="cotizar" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Contacto Directo</span>
+          <h2 class="section-title">Solicita tu presupuesto sin compromiso</h2>
+          <p class="section-subtitle">Completa tus datos y describe el trabajo que necesitas. Te responderemos a la brevedad para coordinar una evaluación.</p>
+        </div>
+
+        <div class="contact-wrapper">
+          <div class="contact-info-box">
+            <div class="info-row">
+              <div class="info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <div>
+                <h4>Facturación Electrónica RUC 10</h4>
+                <p>Emitimos facturas y recibos electrónicos para empresas, edificios y clientes particulares.</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <div class="info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <h4>Horario de Atención</h4>
+                <p>Lunes a Sábado de 7:30 a.m. a 7:00 p.m. Atención de emergencias de gasfitería y electricidad previa coordinación.</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <div class="info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <h4>Cobertura</h4>
+                <p>Atención a domicilio, departamentos, oficinas y locales comerciales en Lima Metropolitana.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FORMULARIO CON ACTION CONFIGURADO PARA FORMSPREE -->
+          <div class="form-card">
+            <form id="quoteForm" action="https://formspree.io/f/TU_EMAIL" method="POST">
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="nombre">Nombre completo o Empresa *</label>
+                  <input type="text" id="nombre" name="nombre" placeholder="Ej. Carlos Mendoza" autocomplete="name" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="telefono">Teléfono / WhatsApp *</label>
+                  <input type="tel" id="telefono" name="telefono" placeholder="Ej. 987 654 321" inputmode="tel" autocomplete="tel" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="servicio">Servicio requerido *</label>
+                <select id="servicio" name="servicio" required>
+                  <option value="" disabled selected>Selecciona una especialidad...</option>
+                  <option value="Albañilería, pisos y contrapisos">Albañilería, pisos y contrapisos</option>
+                  <option value="Enchape de mayólicas y pisos">Enchape de mayólicas y porcelanatos</option>
+                  <option value="Gasfitería y renovación de tuberías">Gasfitería y renovación de tuberías</option>
+                  <option value="Instalaciones sanitarias">Instalaciones sanitarias</option>
+                  <option value="Instalaciones eléctricas">Instalaciones eléctricas</option>
+                  <option value="Acabados y pintura">Acabados y pintura</option>
+                  <option value="Cerrajería y mantenimiento general">Cerrajería y mantenimiento general</option>
+                  <option value="Remodelación integral / Varios servicios">Remodelación integral / Varios servicios</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="mensaje">Mensaje o detalles del trabajo *</label>
+                <textarea id="mensaje" name="mensaje" placeholder="Indica el distrito, tipo de trabajo, medidas aproximadas o si requieres Factura / Recibo por RUC 10..." required></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn">
+                <span>Enviar solicitud de cotización</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+
+              <p class="form-privacy">Tus datos se utilizan únicamente para contactarte con tu presupuesto formal.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <strong style="color:#FFFFFF;">Sánchez Servicios Generales</strong> — Construcción, Acabados y Mantenimiento Integral.
+      </div>
+      <div>
+        Formalidad Tributaria SUNAT • Emisión de Facturas y Recibos por RUC 10
+      </div>
+    </div>
+  </footer>
+
+  <!-- BARRA INFERIOR FIJA PARA MÓVILES (ANDROID / iOS) -->
+  <nav class="mobile-sticky-bar" aria-label="Accesos rápidos móviles">
+    <a href="#servicios" class="bar-btn-services">Ver Servicios</a>
+    <a href="#cotizar" class="bar-btn-quote">Cotizar Ahora</a>
+  </nav>
+
+  <!-- LIBRERÍA LIGERA GSAP + SCROLLTRIGGER -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Preselección automática de servicio desde las tarjetas
+      const serviceSelect = document.getElementById('servicio');
+      const messageInput = document.getElementById('mensaje');
+      const serviceButtons = document.querySelectorAll('[data-select-service]');
+
+      serviceButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const chosenService = btn.getAttribute('data-select-service');
+          if (serviceSelect) {
+            serviceSelect.value = chosenService;
+          }
+          const contactSection = document.getElementById('cotizar');
+          if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setTimeout(() => {
+              if (messageInput) messageInput.focus({ preventScroll: true });
+            }, 550);
+          }
+        });
+      });
+
+      // 2. Animaciones fluidas con GSAP (con ejecución segura)
+      if (typeof gsap !== 'undefined') {
+        if (typeof ScrollTrigger !== 'undefined') {
+          gsap.registerPlugin(ScrollTrigger);
+        }
+
+        // Entrada del Hero
+        gsap.from('.hero-content > *', {
+          y: 22,
+          opacity: 0,
+          duration: 0.7,
+          stagger: 0.1,
+          ease: 'power3.out'
+        });
+
+        gsap.from('.hero-card', {
+          y: 28,
+          opacity: 0,
+          duration: 0.8,
+          delay: 0.2,
+          ease: 'power3.out'
+        });
+
+        // Tarjetas de servicios al hacer scroll
+        gsap.from('.service-card', {
+          scrollTrigger: {
+            trigger: '.services-grid',
+            start: 'top 85%',
+            once: true
+          },
+          y: 26,
+          opacity: 0,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: 'power2.out'
+        });
+
+        // Banner Fiscal RUC 10
+        gsap.from('.fiscal-banner', {
+          scrollTrigger: {
+            trigger: '.fiscal-section',
+            start: 'top 85%',
+            once: true
+          },
+          y: 24,
+          opacity: 0,
+          duration: 0.7,
+          ease: 'power2.out'
+        });
+
+        // Pasos de metodología
+        gsap.from('.step-card', {
+          scrollTrigger: {
+            trigger: '.steps-grid',
+            start: 'top 85%',
+            once: true
+          },
+          y: 22,
+          opacity: 0,
+          duration: 0.6,
+          stagger: 0.12,
+          ease: 'power2.out'
+        });
+      }
+    });
+  </script>
+</body>
+</html>
